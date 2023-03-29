@@ -26,18 +26,27 @@ window.onload = function() {
   let symbolCard = ["♦", "♥", "♠", "♣"];
 
   function randomizer(array) {
-    return array[Math.floor(Math.random() * array.length)]; // 0 - 3
+    return array[Math.floor(Math.random() * array.length)];
   }
 
-  let cardValue = `${randomizer(symbolCard)} ${randomizer(
-    valueCard
-  )} ${randomizer(symbolCard)}`;
-
-  console.log(cardValue);
+  // let cardValue = `${randomizer(symbolCard)} ${randomizer(
+  //   valueCard
+  // )} ${randomizer(symbolCard)}`;
+  // console.log(cardValue); esto era para probar console.log que funcionaba
 
   let comp = (document.getElementById("up").innerHTML = `${randomizer(
     symbolCard
   )}`);
+
+  function ifSymbolIsRed(comp) {
+    if (comp == "♥" || comp == "♦") {
+      comp = document.getElementById("up").style.color = "red";
+      document.getElementById("down").style.color = "red";
+    }
+    return comp;
+  }
+  ifSymbolIsRed(comp);
+
   document.getElementById("center").innerHTML = `${randomizer(valueCard)}`;
   document.getElementById("down").innerHTML = `${comp}`;
 };
